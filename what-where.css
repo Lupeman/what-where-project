@@ -1,3 +1,58 @@
+body {
+  background-image: url("images/background.png");
+  background-position: center;
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif;
+  background-repeat: no-repeat;
+  height: 680px;
+}
+.gameName {
+  font-family: 'Bungee', sans-serif;
+  font-size: 50px;
+  text-align: center;
+  padding:0;
+  margin-top: 20px;
+}
+.nav {
+  margin: -43px 0 30px 370px;
+  text-align: center;
+
+}
+.nav-li {
+  display:block;
+  float:left;
+  /*border: solid 2px #000000;*/
+  background-color: #000000;
+  padding:20px 30px;
+
+
+}
+a {
+  color: #ffffff;
+  text-decoration: none;
+  /*padding-right: 20px;*/
+}
+a:hover {
+  color: yellow;
+}
+
+#score1,  #score2 {
+  background-color: yellow;
+  font-size: 30px;
+  padding:11px 30px;
+}
+
+clearfix .nav::before, .nav::after {
+    content:"";
+    display:table;
+}
+.nav::after {
+    clear:both;
+}
+.nav {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
 .modal {
     /*display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -7,59 +62,62 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    /*background-color: rgb(0,0,0); /* Fallback color */
+    /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .close {
   display:none;
 }
 
 .modal-content {
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    margin: 10% 43%; /* 15% from the top and centered */
+    padding: 5px;
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
 .wellDone, .tryAgain{
-  width:300px;
-  height:auto;
+  width:auto;
+  height:180px;
 }
 
 .green, .veggie {
-  width:300px;
+  width:200px;
   height:300px;
-  border: 1px solid #000000;
-  float:left;
+  /*float:left;*/
 }
 
 .other {
   width:200px;
   height:300px;
-  border: 1px solid #000000;
-  float:left;
+  /*float:left;*/
+}
+#barrel2 {
+  padding-right: 30px;
 }
 
-
-
-.green, .veggie {
-  width:200px;
-  height:300px;
-  border: 1px solid #000000;
-  float:left;
+#barrel3 {
+  padding-left: 30px;
 }
-
-
+.barrel-section{
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+}
 #container {
-  border: 2px solid #000000;
-  height: 500px;
-  width:auto;
+  height: 250px;
+  width:900px;
+  text-align: center;
+  margin:195px auto 0 auto;
 }
 
-#wrapper {
-  height:200px;
-  width:1200px;
-  margin:20px auto;
-}
+/*#wrapper {
+  height:250px;
+  width:1000px;
+  margin:100px 300px 0 300px;
+}*/
+/*h4 {
+  display:inline-block;
+}*/
 
 
 clearfix #container::before, #container::after {
@@ -78,10 +136,20 @@ clearfix #container::before, #container::after {
   height: 50px;
   border-radius: 10px;
   font-size: 20px;
+  background-color: #f2ed5a;
+  font-family: 'Bungee', sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
 }
 
-#foodImage {
+.regularImage {
   height:150px;
+  width:auto;
+  border:none;
+  margin:-20px 650px 400px 650px;
+}
+.droppedImageSize{
+  height:50px;
   width:auto;
   border:none;
 }

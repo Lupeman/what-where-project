@@ -6,42 +6,59 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>What-where</title>
   <link rel="stylesheet" href="/Users/jaimegunther/WDI10/Projects/What-where/what-where.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans" rel="stylesheet">
 </head>
 <body>
-
+<header class="header">
+  <h1 class="gameName">
+    Food Fun!
+  </h1>
+  <nav class="nav">
+    <ul class="nav-ul">
+      <li id="score1" class="nav-li">0</li>
+      <li id="home" class="nav-li"><a href="#">Home</a></li>
+      <li id="how-to" class="nav-li"><a href="#">How To Play</a></li>
+      <li id="about" class="nav-li"><a href="#">About the Creator</a></li>
+      <li id="score2" class="nav-li">0</li>
+    </ul>
+  </nav>
+</header>
   <div id="modal1" class="close">
   <div class="modal-content">
-    <img src="images/Well-done.png" class="wellDone">
+    <img src="images/happy-duggee.jpg" class="wellDone">
   </div>
 </div>
 
 <div id="modal2" class="close">
 <div class="modal-content">
-  <img src="images/try-again.png" class="tryAgain">
+  <img src="images/baby-bear.png" class="tryAgain">
 </div>
 </div>
 
 
 <div id="container">
-  <div id="wrapper">
-    <h4>GREEN</h4>
-<div class="green" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="barrel1" class="barrel-section">
+      <h4>GREEN</h4>
+<div class="green" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="images/barrel.png" alt="image of a barrel"></div>
+</div>
+<div id="barrel2" class="barrel-section">
 <h4>BOTH</h4>
-<div class="green veggie" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="green veggie" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="images/barrel.png" alt="image of a barrel"></div>
+</div>
+<div id="barrel3" class="barrel-section">
 <h4>VEGGIE</h4>
-<div class="veggie" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="veggie" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="images/barrel.png" alt="image of a barrel"></div>
+</div>
+<div id="barrel4" class="barrel-section">
 <h4>OTHER</h4>
-<div class="other" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="other" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="images/barrel.png" alt="image of a barrel"></div>
 </div>
 </div>
 
 
 
 <div id="imageWrapper">
-<!-- <img id="" src="" draggable="true"
-ondragstart="drag(event)">
-</div> -->
+</div>
 
 <button id="startGameBtn">PLAY</button>
 

@@ -26,6 +26,7 @@ var randomFood;
 //     raspberry: "red",
 //     pear: "yellow",
 //     grapes: "green",
+//     green-apple: "green",
 //     lime: "green",
 //     kiwi: "green",
 //     apple: "green",
@@ -108,11 +109,12 @@ var fruits = [
     ["lemon", "yellow", "fruit"],
     ["pineapple", "yellow", "fruit"],
     ["banana", "yellow", "fruit"],
-    ["apple", "green", "fruit"],
+    ["green-apple", "green", "fruit"],
     ["cherries", "red", "fruit"],
     ["strawberry", "red", "fruit"],
     ["watermelon", "red", "fruit"],
     ["raspberry", "red", "fruit"],
+    ["red-apple", "red", "fruit"],
     ["pear", "yellow", "fruit"],
     ["grapes", "green", "fruit"],
     ["lime", "green", "fruit"],
@@ -155,6 +157,7 @@ var startButton = document.getElementById("startGameBtn");
 var area1 = document.getElementsByClassName("green").item(0).className;
 var area2 = document.getElementsByClassName("veggie").item(1).className;
 var both = document.querySelector(".green.veggie");
+var other = document.getElementsByClassName("other").item(0).className;
 
 // function Food(name, color, type) {
 //     this.name = name;
@@ -174,14 +177,15 @@ startButton.addEventListener("click", function() {
     var newFoodDOMElement = document.createElement("img");
     newFoodDOMElement.setAttribute("id", foodName);
     // newFoodDOMElement.setAttribute("draggable", "true");
-    // newFoodDOMElement.addEventListener("ondragstart", drag);
     var dOMElementToAttachImage = document.getElementById("imageWrapper");
     dOMElementToAttachImage.appendChild(newFoodDOMElement);
     var foodImage = document.getElementById(foodName);
     foodImage.src = "images/" + randomFood[0] + ".png";
     foodImage.classList.add(randomFood[1]);
     foodImage.classList.add(randomFood[2]);
+    foodImage.classList.add("regularImage");
     foodImage.addEventListener('dragstart', drag);
+    // foodImage.style.cssText = "width:150px; height:auto; border:none";
 });
 
 //Negate the default to allow items to be dropped on that space.
@@ -204,9 +208,13 @@ function drop(ev) {
     var foodType = foodElement.classList.item(1);
     //get element of where we are dropping the image
     var dropZoneElement = ev.target;
+    //if there is only 1 class
+    if (dropZoneElement.nodeName !== "DIV"){
+      dropZoneElement = dropZoneElement.parentElement;
+    }
+    foodElement.className = "droppedImageSize";
     //get classes for that element.
     var dropZoneList = dropZoneElement.classList;
-    //if there is only 1 class
     if (dropZoneList.length < 2) {
         var dropZoneClass = dropZoneList[0];
         if ((foodColor === dropZoneClass && foodType === area2) || (foodColor === area1 && foodType === dropZoneClass))
@@ -225,7 +233,17 @@ function drop(ev) {
             ev.target.appendChild(document.getElementById(data));
             var indexOfRandomFood = foods.indexOf(randomFood);
             foods.splice(indexOfRandomFood, 1);
-        } else {
+        } else if (foodColor !== area1 && foodType !== area2){
+          var modal = document.getElementById("modal1");
+          modal.className = "modal";
+          setTimeout(function() {
+              modal.className = "close";
+          }, 1500);
+          ev.target.appendChild(document.getElementById(data));
+          var indexOfRandomFood = foods.indexOf(randomFood);
+          foods.splice(indexOfRandomFood, 1);
+        }
+        else {
             var modal = document.getElementById("modal2");
             modal.className = "modal";
             setTimeout(function() {
