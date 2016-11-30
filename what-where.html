@@ -6,9 +6,43 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>What-where</title>
   <link rel="stylesheet" href="/Users/jaimegunther/WDI10/Projects/What-where/what-where.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 
+  <div id="modal1" class="close">
+  <div class="modal-content">
+    <img src="images/Well-done.png" class="wellDone">
+  </div>
+</div>
+
+<div id="modal2" class="close">
+<div class="modal-content">
+  <img src="images/try-again.png" class="tryAgain">
+</div>
+</div>
+
+
+<div id="container">
+  <div id="wrapper">
+    <h4>GREEN</h4>
+<div class="green" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<h4>BOTH</h4>
+<div class="green veggie" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<h4>VEGGIE</h4>
+<div class="veggie" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<h4>OTHER</h4>
+<div class="other" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+</div>
+
+
+
+
+<img id="foodImage" src="" draggable="true"
+ondragstart="drag(event)">
+
+<button id="startGameBtn">PLAY</button>
 
 
 
