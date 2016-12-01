@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>What-where</title>
+  <title>Food Fun</title>
   <link rel="stylesheet" href="/Users/jaimegunther/WDI10/Projects/What-where/what-where.css">
   <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -22,13 +23,16 @@
       <li id="score2" class="nav-li">0</li>
     </ul>
   </nav>
+  <div id="instructions">Move your food item into the correct basket to score a point. Each player gets 5 turns at a time. The winner is the player with the most points when there is no more food left to sort!</div>
 </header>
   <div id="modal1" class="close">
   <div class="modal-content">
     <img src="images/happy-duggee.jpg" class="wellDone">
   </div>
 </div>
-
+<!-- <div class="flies-image">
+  <img src="images/flies.png" class="flies-image">
+</div> -->
 <div id="modal2" class="close">
 <div class="modal-content">
   <img src="images/baby-bear.png" class="tryAgain">
@@ -59,10 +63,15 @@
 
 <div id="imageWrapper">
 </div>
+<button id="startGameBtn">START GAME</button>
+<button id="playBtn">PLAY</button>
 
-<button id="startGameBtn">PLAY</button>
-
-
+<div id="speechModal" class="close">
+<div class="speechModalContent">
+  <img src="images/Speech-bubble.png" class="bubble">
+  <p id="tellWhoStarts"><p>
+</div>
+</div>
 
 
 

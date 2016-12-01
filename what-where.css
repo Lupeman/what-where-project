@@ -4,7 +4,7 @@ body {
   background-size: cover;
   font-family: 'Open Sans', sans-serif;
   background-repeat: no-repeat;
-  height: 680px;
+  /*height: 680px;*/
 }
 .gameName {
   font-family: 'Bungee', sans-serif;
@@ -14,10 +14,11 @@ body {
   margin-top: 20px;
 }
 .nav {
-  margin: -43px 0 30px 370px;
+  margin: -30px 0 30px 363px;
   text-align: center;
 
 }
+
 .nav-li {
   display:block;
   float:left;
@@ -36,6 +37,17 @@ a:hover {
   color: yellow;
 }
 
+#instructions {
+  display:none;
+  padding:20px;
+  width:410px;
+  margin:-30px auto;
+  font-size: 25px;
+  background-color: yellow;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+}
 #score1,  #score2 {
   background-color: yellow;
   font-size: 30px;
@@ -53,6 +65,10 @@ clearfix .nav::before, .nav::after {
     zoom:1; /* For IE 6/7 (trigger hasLayout) */
 }
 
+#imageWrapper {
+  width:10px;
+  height:10px;
+}
 .modal {
     /*display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -69,6 +85,24 @@ clearfix .nav::before, .nav::after {
   display:none;
 }
 
+/*.flies-image {
+  width:100px;
+  height:auto;
+  margin-left:30px;
+  margin-top: -10px;
+  float:left;
+  position: absolute;
+}
+clearfix .flies-image::before, .flies-image::after {
+    content:"";
+    display:table;
+}
+.flies-image::after {
+    clear:both;
+}
+.flies-image {
+    zoom:1;
+}*/
 .modal-content {
     margin: 10% 43%; /* 15% from the top and centered */
     padding: 5px;
@@ -107,18 +141,8 @@ clearfix .nav::before, .nav::after {
   height: 250px;
   width:900px;
   text-align: center;
-  margin:195px auto 0 auto;
+  margin:125px auto 0 auto;
 }
-
-/*#wrapper {
-  height:250px;
-  width:1000px;
-  margin:100px 300px 0 300px;
-}*/
-/*h4 {
-  display:inline-block;
-}*/
-
 
 clearfix #container::before, #container::after {
     content:"";
@@ -131,7 +155,7 @@ clearfix #container::before, #container::after {
     zoom:1; /* For IE 6/7 (trigger hasLayout) */
 }
 
-#startGameBtn {
+#playBtn, #startGameBtn {
   width: 100px;
   height: 50px;
   border-radius: 10px;
@@ -146,10 +170,27 @@ clearfix #container::before, #container::after {
   height:150px;
   width:auto;
   border:none;
-  margin:-20px 650px 400px 650px;
+  margin:-20px 650px 50px 650px;
 }
 .droppedImageSize{
   height:50px;
   width:auto;
   border:none;
+}
+
+#speechModal{
+  margin-left:520px;
+  margin-top:-30px;
+}
+.bubble {
+  width:250px;
+}
+#tellWhoStarts {
+  font-size: 28px;
+  margin-left:50px;
+  margin-top:-80px;
+}
+
+.speechModalContent {
+  margin-top:44%;
 }

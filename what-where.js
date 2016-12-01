@@ -4,6 +4,7 @@ var turnCounter = 0;
 var currentPlayer;
 var player1Score = document.getElementById("score1");
 var player2Score = document.getElementById("score2");
+var answerWhoStarts = document.getElementById("tellWhoStarts");
 
 player1 = {
     score: parseInt(player1Score.value)
@@ -13,13 +14,26 @@ player2 = {
     score: parseInt(player2Score.value)
 }
 
+$(document).ready(function(){
+    $("#how-to").click(function(){
+        $("#instructions").slideToggle("slow");
+    });
+//     $(document).on("pagecontainerload", function(){
+//     $(".flies-image").animate({right:'250px'});
+// });
+});
+
 
 var whoStarts = function() {
     var randomNumber = Math.floor(Math.random() * 2);
     if (randomNumber === 1) {
         currentPlayer = player1;
+        answerWhoStarts.innerText = "Player 1 starts!";
+        speechModal.className = "modal";
     } else {
         currentPlayer = player2;
+        answerWhoStarts.innerText = "Player 2 starts!";
+        speechModal.className = "modal";
     }
 }
 var checkCounter = function(){
@@ -180,6 +194,7 @@ var foods = veggies.concat(fruits);
 
 
 
+var playButton = document.getElementById("playBtn");
 var startButton = document.getElementById("startGameBtn");
 var area1 = document.getElementsByClassName("green").item(0).className;
 var area2 = document.getElementsByClassName("veggie").item(1).className;
@@ -196,10 +211,14 @@ var other = document.getElementsByClassName("other").item(0).className;
 // //     return new Food(arr[0], arr[1], arr[2]);
 // // });
 
+startButton.addEventListener("click", function(){
+  whoStarts();
+
+})
 
 //When we click on start button - assign correct image to randomFood element. Then
 //add appropriate classes.
-startButton.addEventListener("click", function() {
+playButton.addEventListener("click", function() {
     randomFood = foods[Math.floor(Math.random() * foods.length)];
     var foodName = randomFood[0];
     var newFoodDOMElement = document.createElement("img");
@@ -213,6 +232,8 @@ startButton.addEventListener("click", function() {
     foodImage.classList.add(randomFood[2]);
     foodImage.classList.add("regularImage");
     foodImage.addEventListener('dragstart', drag);
+    speechModal.className = "close";
+    startButton.disabled = true;
     turnCounter++;
 });
 
@@ -270,7 +291,22 @@ function drop(ev) {
           }
           checkCounter();
 
-    } else if (foodColor !== area1 && foodType !== area2) {
+    // } else if (foodColor !== area1 && foodType !== area2) {
+    //     var modal = document.getElementById("modal2");
+    //     modal.className = "modal";
+    //     setTimeout(function() {
+    //         modal.className = "close";
+    //     }, 1500);
+    //     checkCounter();
+    }
+    else if(foodColor !== dropZoneClass || foodType !== dropZoneClass){
+      var modal = document.getElementById("modal2");
+         modal.className = "modal";
+         setTimeout(function() {
+             modal.className = "close";
+         }, 1500);
+         checkCounter();
+    }else {
         var modal = document.getElementById("modal1");
         modal.className = "modal";
         setTimeout(function() {
@@ -280,18 +316,11 @@ function drop(ev) {
         var indexOfRandomFood = foods.indexOf(randomFood);
         foods.splice(indexOfRandomFood, 1);
         currentPlayer.score += 1;
-        if(currentPlayer === player1){
-          player1Score.innerText = currentPlayer.score;
-        }else if(currentPlayer === player2){
-          player2Score.innerText = currentPlayer.score;
-        }
-        checkCounter();
-    } else {
-        var modal = document.getElementById("modal2");
-        modal.className = "modal";
-        setTimeout(function() {
-            modal.className = "close";
-        }, 1500);
+          if(currentPlayer === player1){
+            player1Score.innerText = currentPlayer.score;
+          }else if(currentPlayer === player2){
+            player2Score.innerText = currentPlayer.score;
+          }
         checkCounter();
     }
 
