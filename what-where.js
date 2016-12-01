@@ -1,7 +1,34 @@
-var player1;
-var player2;
 var gameType;
 var randomFood;
+var turnCounter = 0;
+var currentPlayer;
+var player1Score = document.getElementById("score1");
+var player2Score = document.getElementById("score2");
+
+player1 = {
+    score: parseInt(player1Score.value)
+}
+
+player2 = {
+    score: parseInt(player2Score.value)
+}
+
+
+var whoStarts = function() {
+    var randomNumber = Math.floor(Math.random() * 2);
+    if (randomNumber === 1) {
+        currentPlayer = player1;
+    } else {
+        currentPlayer = player2;
+    }
+}
+var checkCounter = function(){
+if((turnCounter % 5) === 0 && currentPlayer === player1){
+  currentPlayer = player2;
+}else if((turnCounter % 5) === 0 && currentPlayer === player2){
+  currentPlayer = player1;
+}
+}
 
 
 
@@ -169,6 +196,7 @@ var other = document.getElementsByClassName("other").item(0).className;
 // //     return new Food(arr[0], arr[1], arr[2]);
 // // });
 
+
 //When we click on start button - assign correct image to randomFood element. Then
 //add appropriate classes.
 startButton.addEventListener("click", function() {
@@ -185,7 +213,7 @@ startButton.addEventListener("click", function() {
     foodImage.classList.add(randomFood[2]);
     foodImage.classList.add("regularImage");
     foodImage.addEventListener('dragstart', drag);
-    // foodImage.style.cssText = "width:150px; height:auto; border:none";
+    turnCounter++;
 });
 
 //Negate the default to allow items to be dropped on that space.
@@ -209,67 +237,92 @@ function drop(ev) {
     //get element of where we are dropping the image
     var dropZoneElement = ev.target;
     //if there is only 1 class
-    if (dropZoneElement.nodeName !== "DIV"){
-      dropZoneElement = dropZoneElement.parentElement;
+    if (dropZoneElement.nodeName !== "DIV") {
+        dropZoneElement = dropZoneElement.parentElement;
     }
     foodElement.className = "droppedImageSize";
     //get classes for that element.
     var dropZoneList = dropZoneElement.classList;
     if (dropZoneList.length < 2) {
         var dropZoneClass = dropZoneList[0];
-        if ((foodColor === dropZoneClass && foodType === area2) || (foodColor === area1 && foodType === dropZoneClass))
-        {
+        if ((foodColor === dropZoneClass && foodType === area2) || (foodColor === area1 && foodType === dropZoneClass)) {
             var modal = document.getElementById("modal2");
             modal.className = "modal";
             setTimeout(function() {
                 modal.className = "close";
             }, 1500);
-        } else if (foodColor === dropZoneClass || foodType === dropZoneClass) {
-            var modal = document.getElementById("modal1");
-            modal.className = "modal";
-            setTimeout(function() {
-                modal.className = "close";
-            }, 1500);
-            ev.target.appendChild(document.getElementById(data));
-            var indexOfRandomFood = foods.indexOf(randomFood);
-            foods.splice(indexOfRandomFood, 1);
-        } else if (foodColor !== area1 && foodType !== area2){
-          var modal = document.getElementById("modal1");
-          modal.className = "modal";
-          setTimeout(function() {
-              modal.className = "close";
-          }, 1500);
-          ev.target.appendChild(document.getElementById(data));
-          var indexOfRandomFood = foods.indexOf(randomFood);
-          foods.splice(indexOfRandomFood, 1);
+            checkCounter();
+
+    } else if (foodColor === dropZoneClass || foodType === dropZoneClass) {
+        var modal = document.getElementById("modal1");
+        modal.className = "modal";
+        setTimeout(function() {
+            modal.className = "close";
+        }, 1500);
+        ev.target.appendChild(document.getElementById(data));
+        var indexOfRandomFood = foods.indexOf(randomFood);
+        foods.splice(indexOfRandomFood, 1);
+        currentPlayer.score += 1;
+          if(currentPlayer === player1){
+            player1Score.innerText = currentPlayer.score;
+          }else if(currentPlayer === player2){
+            player2Score.innerText = currentPlayer.score;
+          }
+          checkCounter();
+
+    } else if (foodColor !== area1 && foodType !== area2) {
+        var modal = document.getElementById("modal1");
+        modal.className = "modal";
+        setTimeout(function() {
+            modal.className = "close";
+        }, 1500);
+        ev.target.appendChild(document.getElementById(data));
+        var indexOfRandomFood = foods.indexOf(randomFood);
+        foods.splice(indexOfRandomFood, 1);
+        currentPlayer.score += 1;
+        if(currentPlayer === player1){
+          player1Score.innerText = currentPlayer.score;
+        }else if(currentPlayer === player2){
+          player2Score.innerText = currentPlayer.score;
         }
-        else {
-            var modal = document.getElementById("modal2");
-            modal.className = "modal";
-            setTimeout(function() {
-                modal.className = "close";
-            }, 1500);
-        }
+        checkCounter();
     } else {
-        var dropZoneClass = dropZoneElement.className.split(" ");
-        var dropZoneColor = dropZoneClass[0];
-        var dropZoneType = dropZoneClass[1];
-        if (foodColor === dropZoneColor && foodType === dropZoneType) {
-            var modal = document.getElementById("modal1");
-            modal.className = "modal";
-            setTimeout(function() {
-                modal.className = "close";
-            }, 1500);
-            ev.target.appendChild(document.getElementById(data));
-            var indexOfRandomFood = foods.indexOf(randomFood);
-            foods.splice(indexOfRandomFood, 1);
-        } else {
-            var modal = document.getElementById("modal2");
-            modal.className = "modal";
-            setTimeout(function() {
-                modal.className = "close";
-            }, 1500);
-        }
+        var modal = document.getElementById("modal2");
+        modal.className = "modal";
+        setTimeout(function() {
+            modal.className = "close";
+        }, 1500);
+        checkCounter();
     }
+
+} else {
+    var dropZoneClass = dropZoneElement.className.split(" ");
+    var dropZoneColor = dropZoneClass[0];
+    var dropZoneType = dropZoneClass[1];
+    if (foodColor === dropZoneColor && foodType === dropZoneType) {
+        var modal = document.getElementById("modal1");
+        modal.className = "modal";
+        setTimeout(function() {
+            modal.className = "close";
+        }, 1500);
+        ev.target.appendChild(document.getElementById(data));
+        var indexOfRandomFood = foods.indexOf(randomFood);
+        foods.splice(indexOfRandomFood, 1);
+        currentPlayer.score += 1;
+        if(currentPlayer === player1){
+          player1Score.innerText = currentPlayer.score;
+        }else if(currentPlayer === player2){
+          player2Score.innerText = currentPlayer.score;
+        }
+        checkCounter();
+    } else {
+        var modal = document.getElementById("modal2");
+        modal.className = "modal";
+        setTimeout(function() {
+            modal.className = "close";
+        }, 1500);
+        checkCounter();
+    }
+}
 
 }
