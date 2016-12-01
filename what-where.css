@@ -30,7 +30,6 @@ body {
 a {
   color: #ffffff;
   text-decoration: none;
-  /*padding-right: 20px;*/
 }
 a:hover {
   color: yellow;
@@ -109,15 +108,6 @@ clearfix .nav::before, .nav::after {
   text-align: center;
   margin:195px auto 0 auto;
 }
-
-/*#wrapper {
-  height:250px;
-  width:1000px;
-  margin:100px 300px 0 300px;
-}*/
-/*h4 {
-  display:inline-block;
-}*/
 
 
 clearfix #container::before, #container::after {
