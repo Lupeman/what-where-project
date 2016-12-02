@@ -1,11 +1,11 @@
 body {
   background-image: url("images/background.png");
-  background-position: center;
-  background-size: cover;
-  font-family: 'Open Sans', sans-serif;
+  background-position: center -15px;
+  background-size:cover;
   background-repeat: no-repeat;
-  /*height: 680px;*/
+  font-family: 'Open Sans', sans-serif;
 }
+
 .gameName {
   font-family: 'Bungee', sans-serif;
   font-size: 50px;
@@ -14,7 +14,7 @@ body {
   margin-top: 20px;
 }
 .nav {
-  margin: -30px 0 30px 363px;
+  margin: -40px 0 30px 340px;
   text-align: center;
 
 }
@@ -84,24 +84,6 @@ clearfix .nav::before, .nav::after {
   display:none;
 }
 
-/*.flies-image {
-  width:100px;
-  height:auto;
-  margin-left:30px;
-  margin-top: -10px;
-  float:left;
-  position: absolute;
-}
-clearfix .flies-image::before, .flies-image::after {
-    content:"";
-    display:table;
-}
-.flies-image::after {
-    clear:both;
-}
-.flies-image {
-    zoom:1;
-}*/
 .modal-content {
     margin: 10% 43%; /* 15% from the top and centered */
     padding: 5px;
@@ -140,7 +122,7 @@ clearfix .flies-image::before, .flies-image::after {
   height: 250px;
   width:900px;
   text-align: center;
-  margin:125px auto 0 auto;
+  margin:198px auto 0 auto;
 }
 
 clearfix #container::before, #container::after {
@@ -186,10 +168,10 @@ clearfix #container::before, #container::after {
 }
 #tellWhoStarts {
   font-size: 28px;
-  margin-left:50px;
+  margin-left:45px;
   margin-top:-80px;
 }
 
 .speechModalContent {
-  margin-top:44%;
+  margin-top:46%;
 }

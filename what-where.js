@@ -5,6 +5,7 @@ var currentPlayer;
 var player1Score = document.getElementById("score1");
 var player2Score = document.getElementById("score2");
 var answerWhoStarts = document.getElementById("tellWhoStarts");
+var birdTellWhoStarts = document.getElementById("birdWhosTurn");
 
 var playButton = document.getElementById("playBtn");
 var startButton = document.getElementById("startGameBtn");
@@ -25,9 +26,6 @@ $(document).ready(function(){
     $("#how-to").click(function(){
         $("#instructions").slideToggle("slow");
     });
-//     $(document).on("pagecontainerload", function(){
-//     $(".flies-image").animate({right:'250px'});
-// });
 });
 
 var whoStarts = function() {
@@ -46,8 +44,25 @@ var whoStarts = function() {
 var checkCounter = function(){
   if ((turnCounter % 5) === 0 && currentPlayer === player1){
     currentPlayer = player2;
+    birdWhosTurn.innerText = "Player 2's turn!";
+    setTimeout(function() {
+        birdSpeechModal.className = "modal";
+    }, 1500);
   } else if((turnCounter % 5) === 0 && currentPlayer === player2){
     currentPlayer = player1;
+    birdWhosTurn.innerText = "Player 1's turn!";
+    setTimeout(function() {
+        birdSpeechModal.className = "modal";
+    }, 1500);
+  }
+}
+
+var updateScore = function(){
+  currentPlayer.score++;
+  if (currentPlayer === player1){
+    player1Score.innerText = currentPlayer.score;
+  }else if (currentPlayer === player2){
+    player2Score.innerText = currentPlayer.score;
   }
 }
 
@@ -130,8 +145,8 @@ var tryAgainModalClass = function(){
 
 startButton.addEventListener("click", function(){
   whoStarts();
-
 })
+
 
 //When we click on start button - assign correct image to randomFood element. Then
 //add appropriate classes.
@@ -194,14 +209,19 @@ function drop(ev) {
 
       if ((foodColor === dropZoneClass && foodType === area2) || (foodColor === area1 && foodType === dropZoneClass)) {
         tryAgainModalClass();
+        checkCounter();
       } else if (foodColor === dropZoneClass || foodType === dropZoneClass) {
         goodJobModalClass();
         ev.target.appendChild(document.getElementById(data));
+
+        updateScore();
+
+        checkCounter();
+
       } else {
         tryAgainModalClass();
+        checkCounter();
       }
-
-      checkCounter();
 
     } else {
       var dropZoneClass = dropZoneElement.className.split(" ");
@@ -210,13 +230,21 @@ function drop(ev) {
 
       if (foodColor === dropZoneColor && foodType === dropZoneType) {
           goodJobModalClass();
+
           ev.target.appendChild(document.getElementById(data));
 
+          updateScore();
+
+          checkCounter();
       } else {
+
           tryAgainModalClass();
+
+          checkCounter();
       }
+
     }
-    checkCounter();
+
 }
 
 
