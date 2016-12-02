@@ -5,7 +5,7 @@ var currentPlayer;
 var player1Score = document.getElementById("score1");
 var player2Score = document.getElementById("score2");
 var answerWhoStarts = document.getElementById("tellWhoStarts");
-var birdTellWhoStarts = document.getElementById("birdWhosTurn");
+// var birdTellWhoStarts = document.getElementById("birdWhosTurn");
 
 var playButton = document.getElementById("playBtn");
 var startButton = document.getElementById("startGameBtn");
@@ -44,16 +44,16 @@ var whoStarts = function() {
 var checkCounter = function(){
   if ((turnCounter % 5) === 0 && currentPlayer === player1){
     currentPlayer = player2;
-    birdWhosTurn.innerText = "Player 2's turn!";
-    setTimeout(function() {
-        birdSpeechModal.className = "modal";
-    }, 1500);
+    // birdWhosTurn.innerText = "Player 2's turn!";
+    // setTimeout(function() {
+    //     birdSpeechModal.className = "modal";
+    // }, 1500);
   } else if((turnCounter % 5) === 0 && currentPlayer === player2){
     currentPlayer = player1;
-    birdWhosTurn.innerText = "Player 1's turn!";
-    setTimeout(function() {
-        birdSpeechModal.className = "modal";
-    }, 1500);
+    // birdWhosTurn.innerText = "Player 1's turn!";
+    // setTimeout(function() {
+    //     birdSpeechModal.className = "modal";
+    // }, 1500);
   }
 }
 
@@ -165,6 +165,7 @@ playButton.addEventListener("click", function() {
     foodImage.classList.add("regularImage");
     foodImage.addEventListener('dragstart', drag);
     speechModal.className = "close";
+    // birdSpeechModal.className = "close";
     startButton.disabled = true;
     turnCounter++;
 });
